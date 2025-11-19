@@ -26,22 +26,12 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Debug SFTP path
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          sftp_only: true
-          remote_path: .
-          args: "pwd && ls -la"
-
       - name: Upload via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local_path: ./dist
-          remote_path: htdocs
+          local_path: ./dist/*
+          remote_path: /htdocs/
           sftp_only: true
