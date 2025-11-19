@@ -34,7 +34,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           sftp_only: true
           remote_path: .
-          args: "pwd && ls -la"
+          args: "ls -la"
 
       - name: Upload via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
