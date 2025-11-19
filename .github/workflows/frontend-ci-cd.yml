@@ -2,14 +2,14 @@ name: MyPortfolio Frontend CI/CD
 
 on:
   push:
-    branches: [main]
+    branches: ["main"]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -21,15 +21,15 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: npm test --if present
+        run: npm test --if-present
 
-      - name: Build
+      - name: Build project
         run: npm run build
 
       - name: Upload via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          host: ${{ secrets.FTP_SERVER }}
+          server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local_path: ./dist/*
