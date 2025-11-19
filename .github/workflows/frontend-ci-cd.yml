@@ -27,17 +27,18 @@ jobs:
         run: npm run build
 
       # ================================
-      # 🔍 DEBUG SFTP - NO local_path AQUÍ
+      # 🔍 DEBUG REAL — ESTE SÍ FUNCIONA
       # ================================
       - name: Debug SFTP path
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        uses: appleboy/ssh-action@v0.1.6
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          host: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          sftp_only: true
-          remote_path: .
-          args: "ls -la"
+          port: 22
+          script: |
+            pwd
+            ls -la
 
       # ================================
       # 🚀 DEPLOY REAL
