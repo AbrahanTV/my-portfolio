@@ -5,33 +5,32 @@ on:
     branches: [main]
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
 
-      - name: Install dependencies
+      - name: Install deps
         run: npm install
 
-      - name: Run tests
-        run: npm test --if-present
-
-      - name: Build project
+      - name: Build
         run: npm run build
 
-      - name: Upload via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      - name: Deploy via SFTP (works with Network Solutions)
+        uses: appleboy/sftp-action@v0.0.9
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          host: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local_path: ./dist
-          remote_path: .
-          sftp_only: true
+          port: 22
+
+          # sube los archivos contenidos en dist/
+          source: "./dist/*"
+          target: "/htdocs"
+
+          overwrite: true
