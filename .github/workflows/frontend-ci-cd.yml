@@ -26,23 +26,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # ================================
-      # 🔍 DEBUG REAL — ESTE SÍ FUNCIONA
-      # ================================
-      - name: Debug SFTP path
-        uses: appleboy/ssh-action@v0.1.6
-        with:
-          host: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: 22
-          script: |
-            pwd
-            ls -la
-
-      # ================================
-      # 🚀 DEPLOY REAL
-      # ================================
       - name: Upload via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
@@ -50,5 +33,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local_path: ./dist
-          remote_path: htdocs
+          remote_path: /htdocs
           sftp_only: true
