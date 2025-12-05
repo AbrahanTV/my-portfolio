@@ -1,15 +1,54 @@
 import Projects from "../components/Projects";
+import SplitText from "../components/SplitText.jsx";
+import RotatingText from "../components/RotatingText.jsx";
 
 const Home = () => {
   return (
     <>
-      <div className="container mt-5 secondary-text">
-        <p className="fs-1 ">
-          Hi, I'm <span className="text-white">Abrahan</span> <br />a{" "}
-          <span className="text-white">Web Developer</span>
-        </p>
-        <p>Computer Science Student • Full Stack Enthusiast</p>
-        <div className="buttons d-flex gap-3">
+      <style>
+        {`
+          .titulo {
+            font-size: 3.3rem;
+          }
+
+          .hero {
+            height: 100vh;
+          }
+        `}
+      </style>
+
+      <div className="hero container mt-5 d-flex flex-column align-items-center justify-content-center text-center secondary-text">
+        <SplitText
+          text="Hello, I'm Abrahan"
+          className="text-2xl font-semibold text-center titulo"
+          delay={10}
+          duration={1}
+          ease="power3.out"
+          splitType="chars"
+          from={{ opacity: 0, y: 40 }}
+          to={{ opacity: 1, y: 0 }}
+        />
+
+        <div className="d-flex align-items-center gap-2">
+          <RotatingText
+            texts={[
+              "Web developer",
+              "Computer Science Student",
+              "Full Stack Enthusiast",
+            ]}
+            mainClassName="titulo  text-rotate px-2 sm:px-2 md:px-3 bg-primary text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded"
+            staggerFrom={"last"}
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-120%" }}
+            staggerDuration={0.025}
+            splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+            transition={{ type: "spring", damping: 30, stiffness: 400 }}
+            rotationInterval={2000}
+          />
+        </div>
+
+        <div className="buttons d-flex mt-4 gap-3">
           <a href="#projects" className="btn button-bg text-white fw-bold">
             View My Work
           </a>
@@ -19,16 +58,9 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="container  my-5 p-5 card-bg rounded">
-        <p className="h2">About Me</p>
-        <p className="">
-          I am a Computer Science specializing in Web Development. <br />I have
-          experience in both frontend and backend development.
-          <br />
-          <br />I enjoy building web applications and learning new technologies
-        </p>
-      </div>
-      <Projects />
+      <section id="projects">
+        <Projects />
+      </section>
     </>
   );
 };
