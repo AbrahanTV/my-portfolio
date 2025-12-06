@@ -56,16 +56,6 @@ const Home = () => {
             Get In Touch
           </a>
         </div>
-        <div className="container  my-5 p-5 card-bg rounded">
-          <p className="h2">About Me</p>
-          <p className="">
-            I am a Computer Science specializing in Web Development. <br />I
-            have experience in both frontend and backend development.
-            <br />
-            <br />I enjoy building web applications and learning new
-            technologies
-          </p>
-        </div>
       </div>
 
       <section id="projects">
