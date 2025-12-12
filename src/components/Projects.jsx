@@ -3,19 +3,19 @@ import Cards from "./Cards.jsx";
 const Projects = () => {
   const cardData = [
     {
-      img: "/imgs/bigbit-picture.png",
+      img: "/images/bigbit-picture.png",
       link: "https://bigbitsoftware.com/",
       name: "BigBit Software",
       description: "This is the website for a software company.",
     },
     {
-      img: "/imgs/teamtnr-picture.png",
+      img: "/images/teamtnr-picture.png",
       link: "https://teamtnr.org/",
       name: "TeamTNR Adoptions",
       description: "Cat adoption website for a non-profit organization.",
     },
     {
-      img: "/imgs/quotes-picture.png",
+      img: "/images/quotes-picture.png",
       link: "https://quotes-three-rust.vercel.app/",
       name: "Quote Generator App",
       description: "API calling app that shows random quotes.",
