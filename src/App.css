@@ -10,6 +10,15 @@ body {
   color: #a9b2c3;
 }
 
+.projects-p {
+  font-size: 3rem;
+}
+
+.card-picture:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
 .card-bg {
   background-color: #ffffff;
 }
@@ -32,4 +41,8 @@ body {
 
 .contact-btn {
   background-color: rgba(82, 82, 82, 0.192);
+}
+
+#projects {
+  height: 100vh;
 }

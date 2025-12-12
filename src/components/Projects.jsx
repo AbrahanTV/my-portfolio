@@ -3,36 +3,43 @@ import Cards from "./Cards.jsx";
 const Projects = () => {
   const cardData = [
     {
-      img: "",
-      name: "Project 1",
-      description: "This is a description for project 1",
+      img: "/imgs/bigbit-picture.png",
+      link: "https://bigbitsoftware.com/",
+      name: "BigBit Software",
+      description: "This is the website for a software company.",
     },
     {
-      img: "",
-      name: "Project 2",
-      description: "This is a description for project 2",
+      img: "/imgs/teamtnr-picture.png",
+      link: "https://teamtnr.org/",
+      name: "TeamTNR Adoptions",
+      description: "Cat adoption website for a non-profit organization.",
     },
     {
-      img: "",
-      name: "Project 3",
-      description: "This is a description for project 3",
+      img: "/imgs/quotes-picture.png",
+      link: "https://quotes-three-rust.vercel.app/",
+      name: "Quote Generator App",
+      description: "API calling app that shows random quotes.",
     },
   ];
 
   return (
     <>
-      <div className="container">
-        <p className="h2">Projects</p>
+      <div className="container d-flex flex-column justify-content-center align-items-center py-5">
+        <p className="projects-p text-white">Projects</p>
 
-        {cardData.map((item, index) => (
-          <div key={index}>
-            <Cards
-              img={item.img}
-              name={item.name}
-              description={item.description}
-            />
+        <div className="cards-cont">
+          <div className="cards d-flex flex-row flex-wrap gap-3 justify-content-center">
+            {cardData.map((item, index) => (
+              <Cards
+                key={index}
+                img={item.img}
+                link={item.link}
+                name={item.name}
+                description={item.description}
+              />
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </>
   );
