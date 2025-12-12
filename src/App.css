@@ -1,7 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500;600&display=swap");
+
+/* GENERAL STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: #0e1a2b;
 }
 
+/* FONT FAMILIES */
+.heading {
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+.body-text {
+  font-family: "Inter", Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 400;
+}
+
+.code-text {
+  font-family: "Fira Code", Consolas, monospace;
+  font-weight: 500;
+}
+
+/* FONT STYLES */
+.projects-p {
+  font-size: 3rem;
+}
+
+/* FONT COLORS */
 .primary-text {
   color: #ffffff;
 }
@@ -10,21 +41,26 @@ body {
   color: #a9b2c3;
 }
 
-.projects-p {
-  font-size: 3rem;
-}
-
-.card-picture:hover {
-  transform: scale(1.05);
-  transition: transform 0.2s ease-in-out;
-}
-
-.card-bg {
-  background-color: #ffffff;
+.repo-link:hover {
+  transition: all 0.2s ease-in-out;
+  color: #80a6e9;
 }
 
 .card-text {
   color: #1a1a1a;
+}
+
+.highlight-text {
+  color: #8e6cff;
+}
+
+/* BACKGROUND COLORS  */
+.bg-gray {
+  background-color: #d1d4da88;
+}
+
+.card-bg {
+  background-color: #ffffff;
 }
 
 .button-bg {
@@ -35,8 +71,8 @@ body {
   background-color: #4c8dff;
 }
 
-.highlight-text {
-  color: #8e6cff;
+.tech-bg {
+  background-color: #80a6e9;
 }
 
 .contact-btn {
@@ -44,5 +80,11 @@ body {
 }
 
 #projects {
-  height: 100vh;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+}
+
+.card-picture:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
 }
