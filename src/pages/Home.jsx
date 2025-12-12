@@ -17,10 +17,10 @@ const Home = () => {
         `}
       </style>
 
-      <div className="hero container mt-5 d-flex flex-column align-items-center justify-content-center text-center secondary-text">
+      <div className="hero container col-md-6 mt-5 d-flex flex-column align-items-center justify-content-center text-center secondary-text">
         <SplitText
           text="Hello, I'm Abrahan"
-          className="text-2xl font-semibold text-center titulo"
+          className="text-2xl font-semibold text-center titulo heading"
           delay={10}
           duration={1}
           ease="power3.out"
@@ -57,9 +57,9 @@ const Home = () => {
           </a>
         </div>
 
-        <div className="container w-50 my-5 p-5 card-bg rounded-4 text-black">
-          <p className="h2">About Me</p>
-          <p className="">
+        <div className="container w-75 my-5 p-5 card-bg rounded-4 text-black">
+          <p className="h1 heading">About Me</p>
+          <p className="body-text fs-5">
             I am a Computer Science student specializing in Web Development.{" "}
             <br />I have experience in both frontend and backend development.
             <br />
@@ -69,15 +69,9 @@ const Home = () => {
         </div>
       </div>
 
-      <section id="projects">
+      <section id="projects" className="">
         <Projects />
       </section>
-
-      {/* <div className="to-top-btn">
-        <a href="#top" className="btn button-bg text-white fw-bold">
-          Back to Top
-        </a>
-      </div> */}
     </>
   );
 };
