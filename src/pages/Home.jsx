@@ -1,6 +1,7 @@
 import Projects from "../components/Projects";
 import SplitText from "../components/SplitText.jsx";
 import RotatingText from "../components/RotatingText.jsx";
+import Skills from "../components/Skills.jsx";
 
 const Home = () => {
   return (
@@ -61,6 +62,7 @@ const Home = () => {
           <p className="h1 heading">About Me</p>
           <p className="body-text fs-5">
             I am a Computer Science student specializing in Web Development.{" "}
+            <br />
             <br />I have experience in both frontend and backend development.
             <br />
             <br />I enjoy building web applications and learning new
@@ -71,6 +73,10 @@ const Home = () => {
 
       <section id="projects" className="">
         <Projects />
+      </section>
+
+      <section id="skills" className="">
+        <Skills />
       </section>
     </>
   );

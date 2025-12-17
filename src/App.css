@@ -88,3 +88,20 @@ body {
   transform: scale(1.05);
   transition: transform 0.2s ease-in-out;
 }
+
+.submit-btn {
+  background-color: #2c74f1;
+  transition: all 0.5s;
+}
+
+.submit-btn:hover {
+  background-color: #4c8dff;
+}
+
+#skills {
+  margin-bottom: 10rem;
+}
+
+.skills {
+  gap: 4rem;
+}
