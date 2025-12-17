@@ -1,4 +1,44 @@
+import { useRef } from "react";
 const Footer = () => {
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
+  const messageRef = useRef(null);
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      name: nameRef.current.value,
+      email: emailRef.current.value,
+      message: messageRef.current.value,
+    };
+
+    try {
+      const url = import.meta.env.VITE_API_BASE
+        ? `${import.meta.env.VITE_API_BASE}/api/contact`
+        : "/api/contact";
+
+      console.log("Submitting to:", url);
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message || "Something went wrong");
+      }
+
+      console.log("Form submitted successfully:", data);
+    } catch (error) {
+      console.log("Error submitting form:", error);
+    }
+  };
+
   return (
     <>
       <footer
@@ -21,22 +61,37 @@ const Footer = () => {
           </a>
         </div>
 
-        <form className="form">
+        <form className="form" onSubmit={submitForm}>
           <h1 className="heading text-white">Send me a Message</h1>
-          <label htmlFor="email" className="form-label fs-4 text-white">
-            E-mail
-          </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            className="form-control"
-            placeholder="Type your email"
-          />
+          <div className="name-cont">
+            <label htmlFor="name" className="form-label fs-4 text-white">
+              Name
+            </label>
+            <input
+              ref={nameRef}
+              type="text"
+              name="name"
+              id="name"
+              className="form-control"
+              placeholder="Type your name"
+            />
+            <label htmlFor="email" className="form-label fs-4 text-white">
+              E-mail
+            </label>
+            <input
+              ref={emailRef}
+              type="email"
+              name="email"
+              id="email"
+              className="form-control"
+              placeholder="Type your email"
+            />
+          </div>
           <label htmlFor="message" className="form-label fs-4 text-white">
             Message
           </label>
           <textarea
+            ref={messageRef}
             name="message"
             id=""
             className="form-control"
