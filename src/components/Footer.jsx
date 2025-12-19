@@ -1,88 +1,107 @@
-import { FaHtml5 } from "react-icons/fa";
-import { FaCss3Alt } from "react-icons/fa";
-import { FaJs } from "react-icons/fa";
-import { FaReact } from "react-icons/fa";
-import { FaBootstrap } from "react-icons/fa";
-import { FaGitAlt } from "react-icons/fa";
-import { SiGithubactions } from "react-icons/si";
-import { SiFlask } from "react-icons/si";
-import { FaPython } from "react-icons/fa";
-import { DiMysql } from "react-icons/di";
-
+import { useRef } from "react";
 const Footer = () => {
-  const icons = [
-    { icon: <FaHtml5 />, name: "HTML" },
-    { icon: <FaCss3Alt />, name: "CSS" },
-    { icon: <FaJs />, name: "JavaScript" },
-    { icon: <FaReact />, name: "React" },
-    { icon: <FaBootstrap />, name: "Bootstrap" },
-    { icon: <FaGitAlt />, name: "Git" },
-    { icon: <SiGithubactions />, name: "GitHub Actions" },
-    { icon: <SiFlask />, name: "Flask" },
-    { icon: <FaPython />, name: "Python" },
-    { icon: <DiMysql />, name: "MySQL" },
-  ];
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
+  const messageRef = useRef(null);
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      name: nameRef.current.value,
+      email: emailRef.current.value,
+      message: messageRef.current.value,
+    };
+
+    try {
+      const url = import.meta.env.VITE_API_BASE
+        ? `${import.meta.env.VITE_API_BASE}/api/contact`
+        : "/api/contact";
+
+      console.log("Submitting to:", url);
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message || "Something went wrong");
+      }
+
+      console.log("Form submitted successfully:", data);
+      e.target.reset(); // el form se resetea despues de mandarse -A
+    } catch (error) {
+      console.log("Error submitting form:", error);
+    }
+  };
 
   return (
     <>
       <footer
         id="footer"
-        className="bg-gray d-flex flex-wrap justify-content-around p-5 px-3"
+        className="bg-gray d-flex justify-content-between flex-wrap p-5"
       >
-        <div className="skills-cont w-25 d-flex flex-column align-items-start flex-wrap">
-          <p className="heading text-white fs-1 fw-bold align-self-center">
-            Skills
-          </p>
-          <div className="skills w-100 d-flex justify-content-center text-center gap-5 fs-5 code-text flex-wrap">
-            {icons.map((icon, index) => (
-              <div className="text-white ">
-                <i key={index} className="fs-3">
-                  {icon.icon}
-                </i>
-                <p>{icon.name}</p>
-              </div>
-            ))}
-          </div>
+        <div className="contacts d-flex flex-column gap-4">
+          <h1 className="heading text-white">Contacts</h1>
+          <a
+            href="mailto:abrahantolentinov@gmail.com"
+            className="body-text text-white text-decoration-none fs-3 "
+          >
+            abrahantolentinov@gmail.com
+          </a>
+          <a
+            href="tel+:9174027230"
+            className="body-text text-white text-decoration-none fs-3 fw-"
+          >
+            917-402-7230
+          </a>
         </div>
 
-        <div className="contacts d-flex flex-column align-items- gap-4 p-3 rounded-2">
-          <h1 className="heading text-white">Contact</h1>
-          <div className="my-info d-flex flex-column gap-2">
-            <a
-              href="mailto:abrahantolentinov@gmail.com"
-              className="body-text text-white text-decoration-none fs-3 "
-            >
-              abrahantolentinov@gmail.com
-            </a>
-            <a
-              href="tel+:9174027230"
-              className="body-text text-white text-decoration-none fs-3 fw-"
-            >
-              917-402-7230
-            </a>
-          </div>
-          <form action="" className="form">
+        <form className="form" onSubmit={submitForm}>
+          <h1 className="heading text-white">Send me a Message</h1>
+          <div className="name-cont">
+            <label htmlFor="name" className="form-label fs-4 text-white">
+              Name
+            </label>
+            <input
+              ref={nameRef}
+              type="text"
+              name="name"
+              id="name"
+              className="form-control"
+              placeholder="Type your name"
+            />
             <label htmlFor="email" className="form-label fs-4 text-white">
               E-mail
             </label>
             <input
+              ref={emailRef}
               type="email"
               name="email"
               id="email"
               className="form-control"
               placeholder="Type your email"
             />
-            <label htmlFor="message" className="form-label fs-4 text-white">
-              Message
-            </label>
-            <textarea
-              name="message"
-              id=""
-              className="form-control"
-              placeholder="Send me a message"
-            ></textarea>
-          </form>
-        </div>
+          </div>
+          <label htmlFor="message" className="form-label fs-4 text-white">
+            Message
+          </label>
+          <textarea
+            ref={messageRef}
+            name="message"
+            id=""
+            className="form-control"
+            placeholder="Send me a message"
+          ></textarea>
+          <button type="submit" className="submit-btn btn text-white mt-3">
+            Send
+          </button>
+        </form>
       </footer>
     </>
   );
