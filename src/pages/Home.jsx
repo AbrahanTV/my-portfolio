@@ -15,6 +15,29 @@ const Home = () => {
           .hero {
             height: 100vh;
           }
+
+          @media (max-width: 955px) {
+            .titulo {
+              font-size: 2.5rem;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .titulo {
+              font-size: 2rem;
+            }
+            .hero {
+              height: auto;
+              min-height: 100vh;
+              padding: 2rem 0;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .titulo {
+              font-size: 1.5rem;
+            }
+          }
         `}
       </style>
 
