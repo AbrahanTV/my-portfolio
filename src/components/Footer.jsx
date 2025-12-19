@@ -14,9 +14,10 @@ const Footer = () => {
     };
 
     try {
-      const url = import.meta.env.VITE_API_BASE
-        ? `${import.meta.env.VITE_API_BASE}/api/contact`
-        : "/api/contact";
+      const url =
+        import.meta.env.MODE === "development"
+          ? "http://localhost:5000/api/contact"
+          : "https://api.abrahantolentino.com/api/contact";
 
       console.log("Submitting to:", url);
 
