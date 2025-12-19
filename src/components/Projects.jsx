@@ -8,7 +8,7 @@ const Projects = () => {
       link: "https://bigbitsoftware.com/",
       name: "BigBit Software",
       description: "This is the website for a software company.",
-      repo: "https://github.com/AbrahanTV/quotes/tree/master",
+      repo: "https://github.com/AbrahanTV/BigBit-Software-Website",
     },
     {
       img: "/images/teamtnr-picture.png",
@@ -16,7 +16,7 @@ const Projects = () => {
       link: "https://teamtnr.org/",
       name: "TeamTNR Adoptions",
       description: "Cat adoption website for a non-profit organization.",
-      repo: "https://github.com/AbrahanTV/quotes/tree/master",
+      repo: "https://github.com/AbrahanTV/Cat-Adoption-Website",
     },
     {
       img: "/images/quotes-picture.png",
