@@ -34,6 +34,7 @@ const Footer = () => {
       }
 
       console.log("Form submitted successfully:", data);
+      e.target.reset(); // el form se resetea despues de mandarse -A
     } catch (error) {
       console.log("Error submitting form:", error);
     }
@@ -43,7 +44,7 @@ const Footer = () => {
     <>
       <footer
         id="footer"
-        className="bg-gray d-flex justify-content-between flex-wrap p-3"
+        className="bg-gray d-flex justify-content-between flex-wrap p-5"
       >
         <div className="contacts d-flex flex-column gap-4">
           <h1 className="heading text-white">Contacts</h1>
