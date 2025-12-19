@@ -56,7 +56,7 @@ const Footer = () => {
             abrahantolentinov@gmail.com
           </a>
           <a
-            href="tel+:9174027230"
+            href="tel:9174027230"
             className="body-text text-white text-decoration-none fs-3 fw-"
           >
             917-402-7230
