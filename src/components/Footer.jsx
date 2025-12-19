@@ -17,7 +17,7 @@ const Footer = () => {
       const url =
         import.meta.env.MODE === "development"
           ? "http://localhost:5000/api/contact"
-          : "https://api.abrahantolentino.com/api/contact";
+          : "https://apiabrahantolentinocom.vercel.app/api/contact";
 
       console.log("Submitting to:", url);
 
