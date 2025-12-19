@@ -94,11 +94,11 @@ const Home = () => {
         </div>
       </div>
 
-      <section id="projects" className="">
+      <section id="projects" className="m-3">
         <Projects />
       </section>
 
-      <section id="skills" className="">
+      <section id="skills" className="m-3">
         <Skills />
       </section>
     </>

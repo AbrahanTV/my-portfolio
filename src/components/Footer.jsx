@@ -63,7 +63,7 @@ const Footer = () => {
           </a>
         </div>
 
-        <form className="form" onSubmit={submitForm}>
+        <form className="form mt-4" onSubmit={submitForm}>
           <h1 className="heading text-white">Send me a Message</h1>
           <div className="name-cont">
             <label htmlFor="name" className="form-label fs-4 text-white">
