@@ -1,8 +1,10 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 const Footer = () => {
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const messageRef = useRef(null);
+
+  const [sent, setSent] = useState(false);
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -35,6 +37,8 @@ const Footer = () => {
       }
 
       console.log("Form submitted successfully:", data);
+      console.log("Footer render, sent =", sent);
+      setSent(true);
       e.target.reset(); // el form se resetea despues de mandarse -A
     } catch (error) {
       console.log("Error submitting form:", error);
@@ -65,6 +69,12 @@ const Footer = () => {
 
         <form className="form mt-4" onSubmit={submitForm}>
           <h1 className="heading text-white">Send me a Message</h1>
+
+          {sent && (
+            <p className="body-text text-danger text-center mt-3">
+              Message sent successfully
+            </p>
+          )}
           <div className="name-cont">
             <label htmlFor="name" className="form-label fs-4 text-white">
               Name
@@ -95,7 +105,7 @@ const Footer = () => {
           <textarea
             ref={messageRef}
             name="message"
-            id=""
+            id="message"
             className="form-control"
             placeholder="Send me a message"
           ></textarea>
