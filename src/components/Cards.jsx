@@ -36,7 +36,7 @@ const Cards = ({ img, name, description, link, tech, repo }) => {
           <a
             href={repo}
             target="blank"
-            className="card-text text-decoration-none repo-link"
+            className="repo-link text-white text-decoration-none  p-2 rounded "
           >
             Github
           </a>

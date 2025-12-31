@@ -41,9 +41,13 @@ body {
   color: #a9b2c3;
 }
 
-.repo-link:hover {
+.repo-link {
+  background-color: #4c8dff;
   transition: all 0.2s ease-in-out;
-  color: #80a6e9;
+}
+
+.repo-link:hover {
+  transform: scale(1.05);
 }
 
 .card-text {
@@ -79,11 +83,6 @@ body {
   background-color: rgba(82, 82, 82, 0.192);
 }
 
-#projects {
-  margin-top: 10rem;
-  margin-bottom: 10rem;
-}
-
 .card-picture:hover {
   transform: scale(1.05);
   transition: transform 0.2s ease-in-out;
@@ -98,10 +97,38 @@ body {
   background-color: #4c8dff;
 }
 
-#skills {
+/* SECTIONS */
+#projects {
+  margin-top: 10rem;
   margin-bottom: 10rem;
+}
+
+#skills {
+  margin: 5rem;
 }
 
 .skills {
   gap: 4rem;
+}
+
+.contacts a {
+  color: white;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.contacts a:nth-child(3) {
+  width: fit-content;
+}
+
+.contacts a:hover {
+  color: #80a6e9;
+  transform: scale(1.02);
+}
+
+.card-img {
+  filter: grayscale(1);
+}
+
+.card-img:hover {
+  filter: grayscale(0);
 }

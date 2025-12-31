@@ -1,8 +1,10 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 const Footer = () => {
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const messageRef = useRef(null);
+
+  const [sent, setSent] = useState(false);
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -35,6 +37,8 @@ const Footer = () => {
       }
 
       console.log("Form submitted successfully:", data);
+      console.log("Footer render, sent =", sent);
+      setSent(true);
       e.target.reset(); // el form se resetea despues de mandarse -A
     } catch (error) {
       console.log("Error submitting form:", error);
@@ -47,17 +51,17 @@ const Footer = () => {
         id="footer"
         className="bg-gray d-flex justify-content-between flex-wrap p-5"
       >
-        <div className="contacts d-flex flex-column gap-4">
+        <div className="contacts d-flex flex-column justify-content-center gap-4">
           <h1 className="heading text-white">Contacts</h1>
           <a
             href="mailto:abrahantolentinov@gmail.com"
-            className="body-text text-white text-decoration-none fs-3 "
+            className="body-text text-decoration-none fs-3"
           >
             abrahantolentinov@gmail.com
           </a>
           <a
             href="tel:9174027230"
-            className="body-text text-white text-decoration-none fs-3 fw-"
+            className="body-text text-decoration-none fs-3"
           >
             917-402-7230
           </a>
@@ -65,6 +69,12 @@ const Footer = () => {
 
         <form className="form mt-4" onSubmit={submitForm}>
           <h1 className="heading text-white">Send me a Message</h1>
+          {sent && (
+            <p className="body-text text-danger text-center mt-3">
+              Message sent successfully
+            </p>
+          )}
+
           <div className="name-cont">
             <label htmlFor="name" className="form-label fs-4 text-white">
               Name
@@ -74,7 +84,7 @@ const Footer = () => {
               type="text"
               name="name"
               id="name"
-              className="form-control"
+              className="form-control mb-2"
               placeholder="Type your name"
             />
             <label htmlFor="email" className="form-label fs-4 text-white">
@@ -85,7 +95,7 @@ const Footer = () => {
               type="email"
               name="email"
               id="email"
-              className="form-control"
+              className="form-control mb-2"
               placeholder="Type your email"
             />
           </div>
@@ -95,7 +105,7 @@ const Footer = () => {
           <textarea
             ref={messageRef}
             name="message"
-            id=""
+            id="message"
             className="form-control"
             placeholder="Send me a message"
           ></textarea>

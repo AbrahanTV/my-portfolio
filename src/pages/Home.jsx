@@ -98,7 +98,7 @@ const Home = () => {
         <Projects />
       </section>
 
-      <section id="skills" className="m-3">
+      <section id="skills" className="">
         <Skills />
       </section>
     </>

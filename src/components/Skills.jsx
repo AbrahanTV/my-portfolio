@@ -27,11 +27,11 @@ const Skills = () => {
 
   return (
     <>
-      <div className="skills-cont d-flex flex-column flex-wrap">
-        <p className="heading text-white fs-1 fw-bold align-self-center">
+      <div className="skills-cont d-flex flex-column flex-wrap p-5">
+        <p className="heading text-white fs-1 fw-bold align-self-center mb-4">
           Skills
         </p>
-        <div className="skills w-100 d-flex justify-content-center text-center  fs-5 code-text flex-wrap">
+        <div className="skills w-100 d-flex justify-content-center text-center fs-5 code-text flex-wrap">
           {icons.map((icon, index) => (
             <div className="text-white ">
               <i key={index} className="fs-3">
