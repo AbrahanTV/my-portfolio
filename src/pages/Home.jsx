@@ -2,6 +2,7 @@ import Projects from "../components/Projects";
 import SplitText from "../components/SplitText.jsx";
 import RotatingText from "../components/RotatingText.jsx";
 import Skills from "../components/Skills.jsx";
+import WorkExperience from "../components/WorkExperience.jsx";
 
 const Home = () => {
   return (
@@ -100,6 +101,9 @@ const Home = () => {
 
       <section id="skills" className="">
         <Skills />
+      </section>
+      <section id="work-expreience">
+        <WorkExperience />
       </section>
     </>
   );
