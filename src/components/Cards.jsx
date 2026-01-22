@@ -32,15 +32,17 @@ const Cards = ({ img, name, description, link, tech, repo }) => {
         </div>
         <h5 className="card-title">{name}</h5>
         <p className="body-text card-text">{description}</p>
-        <div className="repo-cont fs-5 d-flex justify-content-start">
-          <a
-            href={repo}
-            target="blank"
-            className="repo-link text-white text-decoration-none  p-2 rounded "
-          >
-            Github
-          </a>
-        </div>
+        {repo && (
+          <div className="repo-cont fs-5 d-flex justify-content-start">
+            <a
+              href={repo}
+              target="blank"
+              className="repo-link text-white text-decoration-none  p-2 rounded "
+            >
+              Github
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );

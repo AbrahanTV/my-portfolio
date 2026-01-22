@@ -12,11 +12,18 @@ const Projects = () => {
     },
     {
       img: "/images/teamtnr-picture.png",
-      tech: ["React", "Flask", "Bootstrap"],
+      tech: ["React", "MySQL", "Flask"],
       link: "https://teamtnr.org/",
       name: "TeamTNR Adoptions",
       description: "Cat adoption website for a non-profit organization.",
       repo: "https://github.com/AbrahanTV/Cat-Adoption-Website",
+    },
+    {
+      img: "/images/the-peoples-cto-picture.png",
+      tech: ["React", "MySQL", "Flask"],
+      link: "https://thepeoplescto.com/",
+      name: "The People's CTO Website",
+      description: "Tech company that teaches young kids how to code.",
     },
     {
       img: "/images/quotes-picture.png",

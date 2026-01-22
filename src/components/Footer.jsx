@@ -18,7 +18,7 @@ const Footer = () => {
     try {
       const url =
         import.meta.env.MODE === "development"
-          ? "http://localhost:5000/api/contact"
+          ? "http://127.0.0.1:5000/api/contact"
           : "https://apiabrahantolentinocom.vercel.app/api/contact";
 
       console.log("Submitting to:", url);
@@ -39,6 +39,8 @@ const Footer = () => {
       console.log("Form submitted successfully:", data);
       console.log("Footer render, sent =", sent);
       setSent(true);
+      setTimeout(() => setSent(false), 3000);
+
       e.target.reset(); // el form se resetea despues de mandarse -A
     } catch (error) {
       console.log("Error submitting form:", error);
@@ -70,8 +72,8 @@ const Footer = () => {
         <form className="form mt-4" onSubmit={submitForm}>
           <h1 className="heading text-white">Send me a Message</h1>
           {sent && (
-            <p className="body-text text-danger text-center mt-3">
-              Message sent successfully
+            <p className="body-text text-primary fs-5 text-center mt-3">
+              Message sent successfully!
             </p>
           )}
 
