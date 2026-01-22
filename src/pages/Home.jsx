@@ -3,7 +3,6 @@ import SplitText from "../components/SplitText.jsx";
 import RotatingText from "../components/RotatingText.jsx";
 import Skills from "../components/Skills.jsx";
 import WorkExperience from "../components/WorkExperience.jsx";
-
 const Home = () => {
   return (
     <>
@@ -37,6 +36,37 @@ const Home = () => {
           @media (max-width: 480px) {
             .titulo {
               font-size: 1.5rem;
+            }
+          }
+
+          .buttons {
+            flex-wrap: wrap;
+          }
+
+          .buttons a {
+            min-width: 150px;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+          }
+
+          @media (max-width: 768px) {
+            .buttons a {
+              font-size: 0.9rem;
+              padding: 0.4rem 0.8rem;
+              min-width: 140px;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .buttons {
+              gap: 0.5rem !important;
+            }
+
+            .buttons a {
+              flex: 1 1 calc(50% - 0.25rem);
+              font-size: 0.85rem;
+              padding: 0.35rem 0.6rem;
+              min-width: auto;
             }
           }
         `}
@@ -79,6 +109,14 @@ const Home = () => {
           </a>
           <a href="#footer" className="btn contact-btn text-white ">
             Get In Touch
+          </a>
+          <a
+            href="/public/files/Abrahan_Programmer_Resume_Updated.pdf"
+            download
+            id="resumeBtn"
+            className="btn button-bg text-white"
+          >
+            Download Resume
           </a>
         </div>
 
