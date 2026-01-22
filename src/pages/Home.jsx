@@ -111,7 +111,7 @@ const Home = () => {
             Get In Touch
           </a>
           <a
-            href="/public/files/Abrahan_Programmer_Resume_Updated.pdf"
+            href="/files/Abrahan_Programmer_Resume_Updated.pdf"
             download
             id="resumeBtn"
             className="btn button-bg text-white"
