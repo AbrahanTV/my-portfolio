@@ -140,9 +140,9 @@ const Home = () => {
       <section id="skills" className="">
         <Skills />
       </section>
-      <section id="work-expreience">
+      {/* <section id="work-expreience">
         <WorkExperience />
-      </section>
+      </section> */}
     </>
   );
 };
