@@ -107,7 +107,9 @@
     display: none; /* hide by default on small screens */
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s ease, opacity 0.25s ease;
+    transition:
+      max-height 0.35s ease,
+      opacity 0.25s ease;
     opacity: 0;
   }
 
