@@ -1,149 +1,147 @@
+import { useState, useEffect } from "react";
 import Projects from "../components/Projects";
-import SplitText from "../components/SplitText.jsx";
-import RotatingText from "../components/RotatingText.jsx";
 import Skills from "../components/Skills.jsx";
-import WorkExperience from "../components/WorkExperience.jsx";
+import { FaArrowDown } from "react-icons/fa";
+import "../styles/Home.css";
+
+import ShinyText from "../components/ShinyText.jsx";
+
 const Home = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const roles = ["Web Developer", "Full Stack Enthusiast", "CS Student"];
+  const [currentRole, setCurrentRole] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRole((prev) => (prev + 1) % roles.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <>
-      <style>
-        {`
-          .titulo {
-            font-size: 3.3rem;
-          }
-
-          .hero {
-            height: 100vh;
-          }
-
-          @media (max-width: 955px) {
-            .titulo {
-              font-size: 2.5rem;
-            }
-          }
-
-          @media (max-width: 768px) {
-            .titulo {
-              font-size: 2rem;
-            }
-            .hero {
-              height: auto;
-              min-height: 100vh;
-              padding: 2rem 0;
-            }
-          }
-
-          @media (max-width: 480px) {
-            .titulo {
-              font-size: 1.5rem;
-            }
-          }
-
-          .buttons {
-            flex-wrap: wrap;
-          }
-
-          .buttons a {
-            min-width: 150px;
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
-          }
-
-          @media (max-width: 768px) {
-            .buttons a {
-              font-size: 0.9rem;
-              padding: 0.4rem 0.8rem;
-              min-width: 140px;
-            }
-          }
-
-          @media (max-width: 480px) {
-            .buttons {
-              gap: 0.5rem !important;
-            }
-
-            .buttons a {
-              flex: 1 1 calc(50% - 0.25rem);
-              font-size: 0.85rem;
-              padding: 0.35rem 0.6rem;
-              min-width: auto;
-            }
-          }
-        `}
-      </style>
-
-      <div className="hero container col-md-6 mt-5 d-flex flex-column align-items-center justify-content-center text-center secondary-text">
-        <SplitText
-          text="Hello, I'm Abrahan"
-          className="text-2xl font-semibold text-center titulo heading"
-          delay={10}
-          duration={1}
-          ease="power3.out"
-          splitType="chars"
-          from={{ opacity: 0, y: 40 }}
-          to={{ opacity: 1, y: 0 }}
-        />
-
-        <div className="d-flex align-items-center gap-2">
-          <RotatingText
-            texts={[
-              "Web developer",
-              "Computer Science Student",
-              "Full Stack Enthusiast",
-            ]}
-            mainClassName="titulo  text-rotate px-2 sm:px-2 md:px-3 bg-primary text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded"
-            staggerFrom={"last"}
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "-120%" }}
-            staggerDuration={0.025}
-            splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-            transition={{ type: "spring", damping: 30, stiffness: 400 }}
-            rotationInterval={2000}
-          />
-        </div>
-
-        <div className="buttons d-flex mt-4 gap-3">
-          <a href="#projects" className="btn button-bg text-white fw-bold">
-            View My Work
-          </a>
-          <a href="#footer" className="btn contact-btn text-white ">
-            Get In Touch
-          </a>
-          <a
-            href="/files/Abrahan_Programmer_Resume_Updated.pdf"
-            download
-            id="resumeBtn"
-            className="btn button-bg text-white"
+    <div className="home-container">
+      {/* Hero Section */}
+      <section id="home" className="hero-section">
+        <div className="hero-content">
+          <div
+            className="hero-text"
+            style={{ transform: `translateY(${scrollY * 0.5}px)` }}
           >
-            Download Resume
-          </a>
+            <h1 className="heading hero-title">
+              <ShinyText
+                className="gradient-text"
+                text="Hi, I'm Abrahan Tolentino"
+                speed={2}
+                delay={1}
+                color="#3b82f6"
+                shineColor="#ffffff"
+                spread={120}
+                direction="left"
+                yoyo={false}
+                pauseOnHover={false}
+                disabled={false}
+              />
+            </h1>
+
+            <div className="role-container">
+              <p className="role-text">I'm a</p>
+              <div className="role-display glass-sm">
+                <span key={currentRole} className="role-animated">
+                  {roles[currentRole]}
+                </span>
+              </div>
+            </div>
+
+            <p className="body-text hero-description">
+              Passionate about building beautiful, functional web applications.{" "}
+              <br />I like experimenting with new technologies and finding
+              simple solutions to complex problems.
+            </p>
+
+            <div className="hero-buttons">
+              <a href="#projects" className="button-primary">
+                View My Work
+              </a>
+              <a href="#contact" className="button-secondary">
+                Get In Touch
+              </a>
+            </div>
+          </div>
+
+          {/* <div className="scroll-indicator">
+            <span className="text-muted">Scroll to explore</span>
+            <FaArrowDown className="arrow-animate" />
+          </div> */}
         </div>
 
-        <div className="container w-75 my-5 p-5 card-bg rounded-4 text-black">
-          <p className="h1 heading">About Me</p>
-          <p className="body-text fs-5">
-            I am a Computer Science student specializing in Web Development.{" "}
-            <br />
-            <br />I have experience in both frontend and backend development.
-            <br />
-            <br />I enjoy building web applications and learning new
-            technologies
-          </p>
-        </div>
-      </div>
+        {/* Gradient Background Elements */}
+        <div className="gradient-blob gradient-blob-1"></div>
+        <div className="gradient-blob gradient-blob-2"></div>
+      </section>
 
-      <section id="projects" className="m-3">
+      {/* About Section */}
+      <section id="about" className="about-section">
+        <div className="section-container">
+          <h2 className="heading section-title">About Me</h2>
+
+          <div className="about-content">
+            <div className="about-text">
+              <p className="body-text">
+                I'm a Computer Science student at Bergen Community College with
+                a passion for web development. I specialize in building modern,
+                responsive web applications using React and full-stack
+                technologies.
+              </p>
+
+              <p className="body-text">
+                With experience in frontend and backend development, I enjoy
+                solving complex problems and creating seamless user experiences.
+                I'm constantly learning new technologies and best practices in
+                the web development space.
+              </p>
+
+              <p className="body-text">
+                When I'm not coding, you'll find me exploring new frameworks,
+                contributing to open-source projects, or helping other
+                developers grow their skills.
+              </p>
+            </div>
+
+            <div className="about-stats">
+              <div className="stat-card glass">
+                <h3 className="text-primary">5+</h3>
+                <p className="text-white">Projects Completed</p>
+              </div>
+              <div className="stat-card glass">
+                <h3 className="text-primary">2+</h3>
+                <p className="text-white">Years Experience</p>
+              </div>
+              <div className="stat-card glass">
+                <h3 className="text-primary">100%</h3>
+                <p className="text-white">Dedication</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="projects-section">
         <Projects />
       </section>
 
-      <section id="skills" className="">
+      {/* Skills Section */}
+      <section id="skills" className="skills-section">
         <Skills />
       </section>
-      {/* <section id="work-expreience">
-        <WorkExperience />
-      </section> */}
-    </>
+    </div>
   );
 };
 

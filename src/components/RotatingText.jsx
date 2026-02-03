@@ -10,7 +10,7 @@ import {
 } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
-import "./RotatingText.css";
+import "../styles/RotatingText.css";
 
 function cn(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -30,7 +30,7 @@ const RotatingText = forwardRef((props, ref) => {
     staggerFrom = "first",
     loop = true,
     auto = true,
-    splitBy = "words",
+    splitBy = "characters",
     onNext,
     mainClassName,
     splitLevelClassName,
@@ -91,7 +91,7 @@ const RotatingText = forwardRef((props, ref) => {
       }
       return Math.abs(staggerFrom - index) * staggerDuration;
     },
-    [staggerFrom, staggerDuration]
+    [staggerFrom, staggerDuration],
   );
 
   const handleIndexChange = useCallback(
@@ -99,7 +99,7 @@ const RotatingText = forwardRef((props, ref) => {
       setCurrentTextIndex(newIndex);
       if (onNext) onNext(newIndex);
     },
-    [onNext]
+    [onNext],
   );
 
   const next = useCallback(() => {
@@ -133,7 +133,7 @@ const RotatingText = forwardRef((props, ref) => {
         handleIndexChange(validIndex);
       }
     },
-    [texts.length, currentTextIndex, handleIndexChange]
+    [texts.length, currentTextIndex, handleIndexChange],
   );
 
   const reset = useCallback(() => {
@@ -150,7 +150,7 @@ const RotatingText = forwardRef((props, ref) => {
       jumpTo,
       reset,
     }),
-    [next, previous, jumpTo, reset]
+    [next, previous, jumpTo, reset],
   );
 
   useEffect(() => {
@@ -174,7 +174,7 @@ const RotatingText = forwardRef((props, ref) => {
         <motion.span
           key={currentTextIndex}
           className={cn(
-            splitBy === "lines" ? "text-rotate-lines" : "text-rotate"
+            splitBy === "lines" ? "text-rotate-lines" : "text-rotate",
           )}
           layout
           aria-hidden="true"
@@ -200,8 +200,8 @@ const RotatingText = forwardRef((props, ref) => {
                         previousCharsCount + charIndex,
                         array.reduce(
                           (sum, word) => sum + word.characters.length,
-                          0
-                        )
+                          0,
+                        ),
                       ),
                     }}
                     className={cn("text-rotate-element", elementLevelClassName)}
