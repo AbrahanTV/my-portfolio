@@ -1,13 +1,23 @@
 import { useRef, useState } from "react";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaEnvelope,
+  FaPhone,
+} from "react-icons/fa";
+import "../styles/Footer.css";
+
 const Footer = () => {
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const messageRef = useRef(null);
-
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
 
   const submitForm = async (e) => {
     e.preventDefault();
+    setError(false);
 
     const payload = {
       name: nameRef.current.value,
@@ -20,8 +30,6 @@ const Footer = () => {
         import.meta.env.MODE === "development"
           ? "http://127.0.0.1:5000/api/contact"
           : "https://apiabrahantolentinocom.vercel.app/api/contact";
-
-      console.log("Submitting to:", url);
 
       const response = await fetch(url, {
         method: "POST",
@@ -36,88 +44,139 @@ const Footer = () => {
         throw new Error(data.message || "Something went wrong");
       }
 
-      console.log("Form submitted successfully:", data);
-      console.log("Footer render, sent =", sent);
       setSent(true);
-      setTimeout(() => setSent(false), 3000);
-
-      e.target.reset(); // el form se resetea despues de mandarse -A
+      setTimeout(() => setSent(false), 4000);
+      e.target.reset();
     } catch (error) {
       console.log("Error submitting form:", error);
+      setError(true);
+      setTimeout(() => setError(false), 4000);
     }
   };
 
   return (
-    <>
-      <footer
-        id="footer"
-        className="bg-gray d-flex justify-content-between flex-wrap p-5"
-      >
-        <div className="contacts d-flex flex-column justify-content-center gap-4">
-          <h1 className="heading text-white">Contacts</h1>
-          <a
-            href="mailto:abrahantolentinov@gmail.com"
-            className="body-text text-decoration-none fs-3"
-          >
-            abrahantolentinov@gmail.com
-          </a>
-          <a
-            href="tel:9174027230"
-            className="body-text text-decoration-none fs-3"
-          >
-            917-402-7230
-          </a>
+    <footer id="contact" className="footer">
+      <div className="footer-container">
+        {/* Contact Section */}
+        <div className="footer-section">
+          <h2 className="heading footer-title">Get In Touch</h2>
+          <p className="body-text footer-subtitle">
+            Have a question or project in mind? I'd love to hear from you.
+          </p>
+
+          <div className="contact-methods">
+            <a
+              href="mailto:abrahantolentinov@gmail.com"
+              className="contact-item glass-sm"
+            >
+              <FaEnvelope className="contact-icon" />
+              <div className="contact-text">
+                <p className="contact-label">Email</p>
+                <span className="contact-value">
+                  abrahantolentinov@gmail.com
+                </span>
+              </div>
+            </a>
+
+            <a href="tel:9174027230" className="contact-item glass-sm">
+              <FaPhone className="contact-icon" />
+              <div className="contact-text">
+                <p className="contact-label">Phone</p>
+                <span className="contact-value">(917) 402-7230</span>
+              </div>
+            </a>
+          </div>
+
+          <div className="social-links">
+            <a
+              href="https://github.com/AbrahanTV"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-btn glass-sm"
+              title="GitHub"
+            >
+              <FaGithub />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-btn glass-sm"
+              title="LinkedIn"
+            >
+              <FaLinkedin />
+            </a>
+          </div>
         </div>
 
-        <form className="form mt-4" onSubmit={submitForm}>
-          <h1 className="heading text-white">Send me a Message</h1>
+        <div className="footer-divider"></div>
+
+        {/* Contact Form Section */}
+        <div className="footer-section">
+          <h2 className="heading footer-title">Send a Message</h2>
+
           {sent && (
-            <p className="body-text text-primary fs-5 text-center mt-3">
-              Message sent successfully!
-            </p>
+            <div className="form-message success-message">
+              ✓ Message sent successfully! I'll get back to you soon.
+            </div>
+          )}
+          {error && (
+            <div className="form-message error-message">
+              ✗ Error sending message. Please try again.
+            </div>
           )}
 
-          <div className="name-cont">
-            <label htmlFor="name" className="form-label fs-4 text-white">
-              Name
-            </label>
-            <input
-              ref={nameRef}
-              type="text"
-              name="name"
-              id="name"
-              className="form-control mb-2"
-              placeholder="Type your name"
-            />
-            <label htmlFor="email" className="form-label fs-4 text-white">
-              E-mail
-            </label>
-            <input
-              ref={emailRef}
-              type="email"
-              name="email"
-              id="email"
-              className="form-control mb-2"
-              placeholder="Type your email"
-            />
-          </div>
-          <label htmlFor="message" className="form-label fs-4 text-white">
-            Message
-          </label>
-          <textarea
-            ref={messageRef}
-            name="message"
-            id="message"
-            className="form-control"
-            placeholder="Send me a message"
-          ></textarea>
-          <button type="submit" className="submit-btn btn text-white mt-3">
-            Send
-          </button>
-        </form>
-      </footer>
-      {/*  */}
-    </>
+          <form className="contact-form" onSubmit={submitForm}>
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input
+                ref={nameRef}
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your name"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                ref={emailRef}
+                type="email"
+                id="email"
+                name="email"
+                placeholder="your@email.com"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="message">Message</label>
+              <textarea
+                ref={messageRef}
+                id="message"
+                name="message"
+                placeholder="Your message..."
+                rows="5"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" className="button-primary submit-btn">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+
+      {/* Footer Bottom */}
+      <div className="footer-bottom">
+        <p className="text-white">
+          © {new Date().getFullYear()} Abrahan Tolentino. All rights reserved.
+        </p>
+      </div>
+    </footer>
   );
 };
 

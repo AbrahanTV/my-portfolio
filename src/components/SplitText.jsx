@@ -9,8 +9,8 @@ gsap.registerPlugin(ScrollTrigger, GSAPSplitText, useGSAP);
 const SplitText = ({
   text,
   className = "",
-  delay = 100,
-  duration = 0.6,
+  delay = 50,
+  duration = 1.25,
   ease = "power3.out",
   splitType = "chars",
   from = { opacity: 0, y: 40 },
@@ -23,7 +23,13 @@ const SplitText = ({
 }) => {
   const ref = useRef(null);
   const animationCompletedRef = useRef(false);
+  const onCompleteRef = useRef(onLetterAnimationComplete);
   const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  // Keep callback ref updated
+  useEffect(() => {
+    onCompleteRef.current = onLetterAnimationComplete;
+  }, [onLetterAnimationComplete]);
 
   useEffect(() => {
     if (document.fonts.status === "loaded") {
@@ -38,6 +44,8 @@ const SplitText = ({
   useGSAP(
     () => {
       if (!ref.current || !text || !fontsLoaded) return;
+      // Prevent re-animation if already completed
+      if (animationCompletedRef.current) return;
       const el = ref.current;
 
       if (el._rbsplitInstance) {
@@ -57,8 +65,8 @@ const SplitText = ({
         marginValue === 0
           ? ""
           : marginValue < 0
-          ? `-=${Math.abs(marginValue)}${marginUnit}`
-          : `+=${marginValue}${marginUnit}`;
+            ? `-=${Math.abs(marginValue)}${marginUnit}`
+            : `+=${marginValue}${marginUnit}`;
       const start = `top ${startPct}%${sign}`;
 
       let targets;
@@ -99,11 +107,11 @@ const SplitText = ({
               },
               onComplete: () => {
                 animationCompletedRef.current = true;
-                onLetterAnimationComplete?.();
+                onCompleteRef.current?.();
               },
               willChange: "transform, opacity",
               force3D: true,
-            }
+            },
           );
           return tween;
         },
@@ -135,10 +143,9 @@ const SplitText = ({
         threshold,
         rootMargin,
         fontsLoaded,
-        onLetterAnimationComplete,
       ],
       scope: ref,
-    }
+    },
   );
 
   const renderTag = () => {
@@ -151,50 +158,13 @@ const SplitText = ({
       willChange: "transform, opacity",
     };
     const classes = `split-parent ${className}`;
-    switch (tag) {
-      case "h1":
-        return (
-          <h1 ref={ref} style={style} className={classes}>
-            {text}
-          </h1>
-        );
-      case "h2":
-        return (
-          <h2 ref={ref} style={style} className={classes}>
-            {text}
-          </h2>
-        );
-      case "h3":
-        return (
-          <h3 ref={ref} style={style} className={classes}>
-            {text}
-          </h3>
-        );
-      case "h4":
-        return (
-          <h4 ref={ref} style={style} className={classes}>
-            {text}
-          </h4>
-        );
-      case "h5":
-        return (
-          <h5 ref={ref} style={style} className={classes}>
-            {text}
-          </h5>
-        );
-      case "h6":
-        return (
-          <h6 ref={ref} style={style} className={classes}>
-            {text}
-          </h6>
-        );
-      default:
-        return (
-          <p ref={ref} style={style} className={classes}>
-            {text}
-          </p>
-        );
-    }
+    const Tag = tag || "p";
+
+    return (
+      <Tag ref={ref} style={style} className={classes}>
+        {text}
+      </Tag>
+    );
   };
   return renderTag();
 };

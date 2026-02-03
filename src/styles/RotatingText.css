@@ -34,8 +34,3 @@
 .text-rotate-space {
   white-space: pre;
 }
-
-.grow {
-  transform: scaleX(0.1);
-  transition: all 0.3s;
-}

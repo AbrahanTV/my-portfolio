@@ -1,48 +1,76 @@
-import { FaHtml5 } from "react-icons/fa";
-import { FaCss3Alt } from "react-icons/fa";
-import { FaJs } from "react-icons/fa";
-import { FaReact } from "react-icons/fa";
-import { FaBootstrap } from "react-icons/fa";
-import { FaGitAlt } from "react-icons/fa";
-import { SiGithubactions } from "react-icons/si";
-import { SiFlask } from "react-icons/si";
-import { FaPython } from "react-icons/fa";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaReact,
+  FaBootstrap,
+  FaGitAlt,
+  FaPython,
+} from "react-icons/fa";
+import { SiGithubactions, SiFlask } from "react-icons/si";
 import { DiMysql } from "react-icons/di";
-import { SiJfrogpipelines } from "react-icons/si";
+import "../styles/Skills.css";
 
 const Skills = () => {
-  const icons = [
-    { icon: <FaHtml5 />, name: "HTML" },
-    { icon: <FaCss3Alt />, name: "CSS" },
-    { icon: <FaJs />, name: "JavaScript" },
-    { icon: <FaReact />, name: "React" },
-    { icon: <FaBootstrap />, name: "Bootstrap" },
-    { icon: <FaGitAlt />, name: "Git" },
-    { icon: <SiGithubactions />, name: "GitHub Actions" },
-    { icon: <SiJfrogpipelines />, name: "CI/CD Pipelines" },
-    { icon: <SiFlask />, name: "Flask" },
-    { icon: <FaPython />, name: "Python" },
-    { icon: <DiMysql />, name: "MySQL" },
+  const skillCategories = [
+    {
+      category: "Frontend",
+      skills: [
+        { icon: <FaHtml5 />, name: "HTML" },
+        { icon: <FaCss3Alt />, name: "CSS" },
+        { icon: <FaJs />, name: "JavaScript" },
+        { icon: <FaReact />, name: "React" },
+        { icon: <FaBootstrap />, name: "Bootstrap" },
+      ],
+    },
+    {
+      category: "Backend",
+      skills: [
+        { icon: <FaPython />, name: "Python" },
+        { icon: <SiFlask />, name: "Flask" },
+        { icon: <DiMysql />, name: "MySQL" },
+      ],
+    },
+    {
+      category: "Tools & DevOps",
+      skills: [
+        { icon: <FaGitAlt />, name: "Git" },
+        { icon: <SiGithubactions />, name: "GitHub Actions" },
+      ],
+    },
   ];
 
   return (
-    <>
-      <div className="skills-cont d-flex flex-column flex-wrap p-5">
-        <p className="heading text-white fs-1 fw-bold align-self-center mb-4">
-          Skills
+    <div className="skills-container">
+      <div className="section-header">
+        <h2 className="heading section-title">Technical Skills</h2>
+        <p className="body-text section-subtitle">
+          Languages, frameworks, and tools I work with
         </p>
-        <div className="skills w-100 d-flex justify-content-center text-center fs-5 code-text flex-wrap">
-          {icons.map((icon, index) => (
-            <div className="text-white ">
-              <i key={index} className="fs-3">
-                {icon.icon}
-              </i>
-              <p>{icon.name}</p>
-            </div>
-          ))}
-        </div>
       </div>
-    </>
+
+      <div className="skills-categories">
+        {skillCategories.map((category, catIndex) => (
+          <div key={catIndex} className="category-group">
+            <h3 className="category-title">{category.category}</h3>
+            <div className="skills-grid">
+              {category.skills.map((skill, skillIndex) => (
+                <div
+                  key={skillIndex}
+                  className="skill-item glass-sm"
+                  style={{
+                    animationDelay: `${(catIndex * 3 + skillIndex) * 0.05}s`,
+                  }}
+                >
+                  <div className="skill-icon">{skill.icon}</div>
+                  <p className="skill-name">{skill.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
