@@ -22,6 +22,15 @@ const Projects = () => {
       repo: "https://github.com/AbrahanTV/Cat-Adoption-Website",
     },
     {
+      img: "/images/teamtnr-dashboard-porftolio.png",
+      tech: ["React", "MySQL", "Flask"],
+      link: "https://teamtnr.org/",
+      name: "TeamTNR Dashboard",
+      description:
+        "Administrative dashboard for managing cat adoptions, tracking applications, and monitoring rescue operations in real-time.",
+      repo: "https://github.com/AbrahanTV/Cat-Adoption-Website",
+    },
+    {
       img: "/images/the-peoples-cto-picture.png",
       tech: ["React", "MySQL", "Flask"],
       link: "https://thepeoplescto.com/",

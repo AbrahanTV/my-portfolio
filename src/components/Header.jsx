@@ -49,7 +49,7 @@ const Header = () => {
 
         <div className="header-actions">
           <a
-            href="/files/Abrahan_Programmer_Resume_Updated.pdf"
+            href="/files/Abrahan_Resume_Updated_2026.pdf"
             download
             className="button-secondary"
           >
