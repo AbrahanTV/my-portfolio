@@ -98,7 +98,7 @@ const Footer = () => {
               <FaGithub />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/abrahan-tolentino-34b654313/"
               target="_blank"
               rel="noopener noreferrer"
               className="social-btn glass-sm"
