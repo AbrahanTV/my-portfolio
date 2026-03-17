@@ -5,11 +5,11 @@ const Projects = () => {
   const cardData = [
     {
       img: "/images/bigbit-picture.png",
-      tech: ["React", "Bootstrap", "Flask"],
+      tech: ["React", "Python", "Flask"],
       link: "https://bigbitsoftware.com/",
       name: "BigBit Software",
       description:
-        "Professional website for a software company with modern UI and responsive design.",
+        "A professional software company website with a React frontend and Flask backend. Handles contact form submissions with server-side validation and sends transactional emails via SendGrid.",
       repo: "https://github.com/AbrahanTV/BigBit-Software-Website",
     },
     {
@@ -18,7 +18,7 @@ const Projects = () => {
       link: "https://teamtnr.org/",
       name: "TeamTNR Adoptions",
       description:
-        "Full-stack cat adoption platform for a non-profit, featuring user accounts and adoption tracking.",
+        "Full-stack cat adoption platform for a non-profit. Users can submit adoption applications through a multistep form made with React, which are stored in a MySQL database and managed through a Flask backend.",
       repo: "https://github.com/AbrahanTV/Cat-Adoption-Website",
     },
     {
@@ -27,7 +27,7 @@ const Projects = () => {
       link: "https://teamtnr.org/",
       name: "TeamTNR Dashboard",
       description:
-        "Administrative dashboard for managing cat adoptions, tracking applications, and monitoring rescue operations in real-time.",
+        "An administrative dashboard for the cat adoption platform. Staff log in via Google Auth and can view and manage all adoption applications pulled from the MySQL database, with real-time updates across rescue operations.",
       repo: "https://github.com/AbrahanTV/Cat-Adoption-Website",
     },
     {
@@ -36,7 +36,7 @@ const Projects = () => {
       link: "https://thepeoplescto.com/",
       name: "The People's CTO",
       description:
-        "Educational platform for teaching coding to young students with interactive lessons.",
+        "A personal brand website for The People's CTO, built with React and a Flask backend. Visitors can submit inquiries through a contact form, with data stored in a MySQL database. The site features a clean, modern design and highlights the client's expertise in technology leadership.",
     },
     {
       img: "/images/bcc-website-picture.png",
@@ -44,8 +44,17 @@ const Projects = () => {
       link: "https://bergencc.github.io/website/",
       name: "Developer Club Website",
       description:
-        "Community website for college developers with news, events, and member profiles.",
+        "A community website for a college developer club, built in TypeScript. Features club news, upcoming events, and member profiles to keep the community connected and informed.",
       repo: "https://github.com/bergencc/website",
+    },
+    {
+      img: "/images/f1-project-picture.png",
+      tech: ["React", "API", "Vercel"],
+      link: "https://f1-project-weld.vercel.app/",
+      name: "Formula 1 Race Tracker & Calendar",
+      description:
+        "React app tracking the live Formula 1 season. Displays race calendar, driver roster, and constructor standings using data from the F1 and OpenF1 APIs. Features a real-time race countdown and team-colored UI.",
+      repo: "https://github.com/AbrahanTV/F1-Project",
     },
     {
       img: "/images/quotes-picture.png",
