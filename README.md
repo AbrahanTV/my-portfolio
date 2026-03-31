@@ -1,16 +1,66 @@
-# React + Vite
+# Abrahan Tolentino — Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal portfolio website built with React and Vite, showcasing projects, skills, and contact information.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** + **Vite 7** (SWC)
+- **React Router v7** for client-side routing
+- **GSAP** + **Motion** for animations
+- **CSS3** with a custom design system
+- **Flask API** (separate repo) for contact form handling
 
-## React Compiler
+## Features
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- Animated hero section with shiny text and rotating role display
+- Projects showcase with hover overlays, live previews, and GitHub links
+- Skills section organized by category (Frontend, Backend, Tools)
+- Contact form connected to a deployed Flask API
+- Responsive, dark-mode design with glass-morphism styling
+- Parallax scrolling and smooth transitions throughout
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Prerequisites:** Node.js 18+
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build locally
+npm run preview
+```
+
+## Environment Variables
+
+Create a `.env` file at the root:
+
+```env
+VITE_API_BASE_URL=http://127.0.0.1:5000
+```
+
+For production, point this to your deployed API URL.
+
+## Project Structure
+
+```
+src/
+├── components/     # Header, Footer, Projects, Skills, animation components
+├── pages/          # Home.jsx (main landing page)
+├── styles/         # Per-component CSS + global design system
+├── App.jsx         # Root component with routing
+└── main.jsx        # React entry point
+public/
+├── files/          # Resume PDF
+└── images/         # Project screenshots
+```
+
+## Deployment
+
+The site is deployed on **Network Solutions**. Pushes to `main` trigger automatic deployments via GitHub Actions.

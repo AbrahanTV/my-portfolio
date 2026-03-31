@@ -24,11 +24,11 @@ const Projects = () => {
     {
       img: "/images/teamtnr-dashboard-porftolio.png",
       tech: ["React", "MySQL", "Flask"],
-      link: "https://teamtnr.org/",
+      link: "https://teamtnr-dashboard.vercel.app/#admin",
       name: "TeamTNR Dashboard",
       description:
         "An administrative dashboard for the cat adoption platform. Staff log in via Google Auth and can view and manage all adoption applications pulled from the MySQL database, with real-time updates across rescue operations.",
-      repo: "https://github.com/AbrahanTV/Cat-Adoption-Website",
+      repo: "https://github.com/AbrahanTV/TeamTNR-Web-Application-Dashboard-",
     },
     {
       img: "/images/the-peoples-cto-picture.png",
