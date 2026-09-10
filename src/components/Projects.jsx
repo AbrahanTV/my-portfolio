@@ -42,10 +42,19 @@ const Projects = () => {
       img: "/images/bcc-website-picture.png",
       tech: ["TypeScript", "JavaScript", "CSS"],
       link: "https://bergencc.github.io/website/",
-      name: "Developer Club Website",
+      name: "BOSF Developer Club Website",
       description:
         "A community website for a college developer club, built in TypeScript. Features club news, upcoming events, and member profiles to keep the community connected and informed.",
       repo: "https://github.com/bergencc/website",
+    },
+    {
+      img: "/images/trameriasjkb-picture.png",
+      tech: ["React", "Python", "API"],
+      link: "https://trameriasjkb.com/",
+      name: "TrameriasJKB Company Website",
+      description:
+        "A professional company website built with a React frontend, showcasing its services, products, and past projects. It includes a contact form powered by a Python backend and a third-party email API for processing and sending inquiries.",
+      repo: "https://github.com/AbrahanTV/TrameriasJKB",
     },
     {
       img: "/images/f1-project-picture.png",
